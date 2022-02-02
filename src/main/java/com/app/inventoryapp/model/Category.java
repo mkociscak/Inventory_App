@@ -12,7 +12,7 @@ public class Category {
     private Long id;
 
     @Column
-    private String typeName;
+    private String categoryName;
 
     @Column
     private String materials;
@@ -20,9 +20,9 @@ public class Category {
     public Category() {
     }
 
-    public Category(Long id, String typeName, String materials) {
+    public Category(Long id, String categoryName, String materials) {
         this.id = id;
-        this.typeName = typeName;
+        this.categoryName = categoryName;
         this.materials = materials;
     }
 
@@ -34,12 +34,12 @@ public class Category {
         this.id = id;
     }
 
-    public String getTypeName() {
-        return typeName;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getMaterials() {
@@ -54,7 +54,7 @@ public class Category {
     public String toString() {
         return "Category{" +
                 "id=" + id +
-                ", typeName='" + typeName + '\'' +
+                ", categoryName='" + categoryName + '\'' +
                 ", materials='" + materials + '\'' +
                 '}';
     }
