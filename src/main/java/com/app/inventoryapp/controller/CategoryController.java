@@ -43,11 +43,6 @@ public class CategoryController {
         return "getting the category with the id of " + categoryId;
     }
 
-    /*@GetMapping(path = "/categories/categoryName")
-    public String getCategoryName(@PathVariable String categoryName) {
-        return "getting the category with the name of " + categoryName;
-    }*/
-
     @PostMapping("/categories/")
     public String createCategory(@RequestBody String body) {
         return "creating a category " + body;
@@ -63,7 +58,10 @@ public class CategoryController {
         return "deleting the category with the id of " + categoryId;
     }
 
-
+ /*@GetMapping(path = "/categories/categoryName")
+    public String getCategoryName(@PathVariable String categoryName) {
+        return "getting the category with the name of " + categoryName;
+    }*/
 }
 
 
