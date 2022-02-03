@@ -10,7 +10,8 @@ import java.util.List;
 @RequestMapping(path = "/api")
 public class CategoryController {
 
-/*Category Repo
+//Category Repo
+    /*
     private CategoryRepository categoryRepository;
 
     @Autowired
@@ -25,11 +26,11 @@ public class CategoryController {
     @PostMapping("/categories/")
     public Category createCategory(@RequestBody Category categoryObject) {
         System.out.println("running createCategory");
-
-        Category category = categoryRepository.getCategoryName(categoryObject.getCategoryName());
+        Category category = categoryRepository.findByName(categoryObject.getCategoryName());//findByName/
         return categoryRepository.save(categoryObject);
     }
-//END Category Repo*/
+//END Category Repo
+    */
 
     @GetMapping(path = "/categories/")
     public String getCategories() {

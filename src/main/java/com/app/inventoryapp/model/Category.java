@@ -1,5 +1,5 @@
 package com.app.inventoryapp.model;
-
+//getters & setters for tables
 
 import javax.persistence.*;
 import java.util.List;
