@@ -1,10 +1,10 @@
 package com.app.inventoryapp.model;
 
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-
-
 public class Category {
     @Id
     @GeneratedValue
@@ -25,6 +25,8 @@ public class Category {
         this.categoryName = categoryName;
         this.materials = materials;
     }
+
+
 
     public Long getId() {
         return id;
