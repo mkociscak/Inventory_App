@@ -17,6 +17,7 @@ public class Category {
     @Column
     private String materials;
 
+
     public Category() {
     }
 
