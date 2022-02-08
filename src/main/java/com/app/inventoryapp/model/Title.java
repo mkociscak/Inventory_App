@@ -16,7 +16,7 @@ public class Title {
     @Column
     private Integer year;
 
-    
+
     public Title() {
     }
 

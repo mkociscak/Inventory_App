@@ -11,7 +11,7 @@ import java.util.List;
 public class CategoryController {
 
 //Category Repo
-    /*
+
     private CategoryRepository categoryRepository;
 
     @Autowired
@@ -26,11 +26,11 @@ public class CategoryController {
     @PostMapping("/categories/")
     public Category createCategory(@RequestBody Category categoryObject) {
         System.out.println("running createCategory");
-        Category category = categoryRepository.findByName(categoryObject.getCategoryName());//findByName/
+        Category category = categoryRepository.getCategoryName(categoryObject.getCategoryName());//findByName/
         return categoryRepository.save(categoryObject);
     }
 //END Category Repo
-    */
+
 
     @GetMapping(path = "/categories/")
     public String getCategories() {
