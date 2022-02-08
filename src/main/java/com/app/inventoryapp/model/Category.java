@@ -24,21 +24,15 @@ public class Category {
     public Category() {
     }
 
-    // one category can contain more than one recipe
+    // one category can contain more than one location
     @OneToMany(mappedBy = "category", orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Location> locationList;
 
-
-    public Category(Long id, String categoryName, String materials) {
-        this.id = id;
-        this.categoryName = categoryName;
-        this.materials = materials;
-    }
-
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -46,6 +40,7 @@ public class Category {
     public String getCategoryName() {
         return categoryName;
     }
+
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
@@ -58,14 +53,6 @@ public class Category {
         this.materials = materials;
     }
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", categoryName='" + categoryName + '\'' +
-                ", materials='" + materials + '\'' +
-                '}';
-    }
     public List<Location> getLocationList() {
         return locationList;
     }
@@ -74,4 +61,13 @@ public class Category {
         this.locationList = locationList;
     }
 
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", categoryName='" + categoryName + '\'' +
+                ", materials='" + materials + '\'' +
+                ", locationList=" + locationList +
+                '}';
+    }
 }

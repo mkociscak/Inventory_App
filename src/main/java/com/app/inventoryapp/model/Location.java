@@ -1,8 +1,10 @@
 package com.app.inventoryapp.model;
 //getters & setters for tables
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,14 +26,13 @@ public class Location {
     private String phone;
 
 
-
     public Location() {
     }
 
-    // one category can contain more than one recipe
-    @OneToMany(mappedBy = "location", orphanRemoval = true)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Category> categoryList;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Location(Long id, String locationName, String city, String phone) {
         this.id = id;
@@ -43,6 +44,7 @@ public class Location {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -50,6 +52,7 @@ public class Location {
     public String getLocationName() {
         return locationName;
     }
+
     public void setLocationName(String locationName) {
         this.locationName = locationName;
     }
@@ -57,6 +60,7 @@ public class Location {
     public String getCity() {
         return city;
     }
+
     public void setCity(String city) {
         this.city = city;
     }
@@ -64,6 +68,7 @@ public class Location {
     public String getPhone() {
         return phone;
     }
+
     public void setPhone(String phone) {
         this.phone = phone;
     }
@@ -77,12 +82,12 @@ public class Location {
                 ", phone='" + phone + '\'' +
                 '}';
     }
-    public List<Category> getLocationList() {
-        return categoryList;
+
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
+    public void setCategory(Category category) {
+        this.category = category;
     }
-
-    }
+}
