@@ -5,10 +5,10 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "artists")
+@Table(name = "Artist")
 public class Artist {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
@@ -18,6 +18,18 @@ public class Artist {
     @Column
     private String artistPhone;
 
+
+    @ManyToOne
+    @JoinColumn(name = "Category")
+    private Category category;
+
+    @OneToMany
+    @JoinColumn(name = "Title")
+    private List<Title> title;
+
+    @OneToMany
+    @JoinColumn(name = "Location")
+    private List<Location> location;
 
     public Artist() {
     }

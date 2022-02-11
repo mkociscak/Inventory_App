@@ -4,9 +4,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "Title")
 public class Title {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
@@ -15,6 +16,14 @@ public class Title {
 
     @Column
     private Integer year;
+
+    @ManyToOne
+    @JoinColumn(name = "Artist")
+    private Artist artist;
+
+    @OneToOne
+    @JoinColumn(name = "Location")
+    private Location location;
 
 
     public Title() {

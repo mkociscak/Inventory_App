@@ -9,10 +9,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "location")
+@Table(name = "Location")
 public class Location {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
@@ -25,14 +25,17 @@ public class Location {
     @Column
     private String phone;
 
+    @ManyToOne
+    @JoinColumn(name = "Artist")
+    private Artist artist;
+
+    @OneToOne
+    @JoinColumn(name = "Title")
+    private Title title;
 
     public Location() {
-    }
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    }
 
     public Location(Long id, String locationName, String city, String phone) {
         this.id = id;
@@ -83,11 +86,5 @@ public class Location {
                 '}';
     }
 
-    public Category getCategory() {
-        return category;
-    }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 }

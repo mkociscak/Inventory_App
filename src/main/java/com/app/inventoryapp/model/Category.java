@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "category")
+@Table(name = "Category")
 public class Category {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
@@ -21,13 +21,20 @@ public class Category {
     private String materials;
 
 
+    @OneToMany
+    @JoinColumn(name = "Artist")
+    private List<Artist> artist;
+
+
     public Category() {
     }
 
-    // one category can contain more than one location
-    @OneToMany(mappedBy = "category", orphanRemoval = true)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Location> locationList;
+    public Category(Long id, String categoryName, String materials, String artist) {
+        this.id = id;
+        this.categoryName = categoryName;
+        this.materials = materials;
+    }
+
 
     public Long getId() {
         return id;
@@ -53,21 +60,17 @@ public class Category {
         this.materials = materials;
     }
 
-    public List<Location> getLocationList() {
-        return locationList;
-    }
-
-    public void setLocationList(List<Location> locationList) {
-        this.locationList = locationList;
-    }
-
     @Override
     public String toString() {
         return "Category{" +
                 "id=" + id +
                 ", categoryName='" + categoryName + '\'' +
                 ", materials='" + materials + '\'' +
-                ", locationList=" + locationList +
                 '}';
     }
 }
+
+    // one category can contain one location
+    //@OneToOne(mappedBy = "category", orphanRemoval = true)
+    //@LazyCollection(LazyCollectionOption.FALSE)
+
