@@ -15,7 +15,7 @@ public class Category {
     private Long id;
 
     @Column
-    private String categoryName;
+    private String categoryName;  //CategoryName categoryName
 
     @Column
     private String materials;
