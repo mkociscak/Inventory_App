@@ -1,19 +1,27 @@
 package com.app.inventoryapp.controller;
 
 import com.app.inventoryapp.model.Artist;
-//import com.app.inventoryapp.repository.ArtistRepository;
+import com.app.inventoryapp.model.Category;
+import com.app.inventoryapp.model.Title;
+import com.app.inventoryapp.model.Location;
+import com.app.inventoryapp.repository.ArtistRepository;
+//import com.app.inventoryapp.service.ArtistService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+
 import java.util.List;
+import java.util.HashMap;
+import java.util.Optional;
 
 
 @RestController
 @RequestMapping(path = "/api")
 public class ArtistController {
 
-//Category Repo
-//END Category Repo
-
+    private ArtistService artistService;
 
     @GetMapping(path = "/artists/")
     public String getAllArtists() {
