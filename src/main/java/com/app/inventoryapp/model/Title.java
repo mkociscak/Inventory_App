@@ -9,13 +9,13 @@ public class Title {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private Long titleId;
 
     @Column
-    private String title;
+    private String titleName;
 
     @Column
-    private Integer year;
+    private Integer titleYear;
 
     @ManyToOne
     @JoinColumn(name = "Artist")
@@ -29,47 +29,42 @@ public class Title {
     public Title() {
     }
 
-    public Title(Long id, String title, Integer year) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
+    public Title(Long titleId, String titleName, Integer titleYear) {
+        this.titleId = titleId;
+        this.titleName = titleName;
+        this.titleYear = titleYear;
     }
 
-
-
-    public Long getId() {
-        return id;
+    public Long getTitleId() {
+        return titleId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTitleId(Long titleId) {
+        this.titleId = titleId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitleName() {
+        return titleName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitleName(String titleName) {
+        this.titleName = titleName;
     }
 
-    public Integer getYear() {
-        return year;
+    public Integer getTitleYear() {
+        return titleYear;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setTitleYear(Integer titleYear) {
+        this.titleYear = titleYear;
     }
-
 
     @Override
     public String toString() {
         return "Title{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", year=" + year +
+                "titleId=" + titleId +
+                ", titleName='" + titleName + '\'' +
+                ", titleYear=" + titleYear +
                 '}';
     }
-
-
 }
