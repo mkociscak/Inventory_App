@@ -16,8 +16,8 @@ public class CategoryService {
 
     private CategoryRepository categoryRepository;
 
-    @Autowired //(@Qualifier(value = "Category")
-    public void setCategoryRepository (CategoryRepository categoryRepository) {
+    @Autowired
+    public void setCategoryRepository(@Qualifier(value = "category") CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
     //----------------------------------

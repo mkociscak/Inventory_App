@@ -31,7 +31,7 @@ public class Category {
         this.materials = materials;
     }
 
-    @OneToMany(mappedBy = "Category", orphanRemoval = true)
+    @OneToMany//(mappedBy = "Category", orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "artistName")
     private List<Artist> artist;

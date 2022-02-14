@@ -25,7 +25,7 @@ public class Artist {
     @JoinColumn(name = "categoryName")
     private Category categoryName;
 
-    @OneToMany(mappedBy = "Artist", orphanRemoval = true)
+    @OneToMany//(mappedBy = "Artist", orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "titleName")
     private List<Title> title;
