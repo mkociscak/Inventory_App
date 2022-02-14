@@ -1,5 +1,7 @@
 package com.app.inventoryapp.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,7 +12,7 @@ public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private Long artistId;
 
     @Column
     private String artistName;
@@ -20,32 +22,33 @@ public class Artist {
 
 
     @ManyToOne
-    @JoinColumn(name = "Category")
-    private Category category;
+    @JoinColumn(name = "categoryName")
+    private Category categoryName;
 
-    @OneToMany
-    @JoinColumn(name = "Title")
+    @OneToMany(mappedBy = "Artist", orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "titleName")
     private List<Title> title;
 
     @OneToMany
-    @JoinColumn(name = "Location")
+    @JoinColumn(name = "locationName")
     private List<Location> location;
 
     public Artist() {
     }
 
-    public Artist(Long id, String artistName, String artistPhone) {
-        this.id = id;
+    public Artist(Long artistId, String artistName, String artistPhone) {
+        this.artistId = artistId;
         this.artistName = artistName;
         this.artistPhone = artistPhone;
     }
 
-    public Long getId() {
-        return id;
+    public Long getArtistId() {
+        return artistId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setArtistId(Long artistId) {
+        this.artistId = artistId;
     }
 
     public String getArtistName() {
@@ -56,6 +59,7 @@ public class Artist {
         this.artistName = artistName;
     }
 
+
     public String getArtistPhone() {
         return artistPhone;
     }
@@ -64,15 +68,18 @@ public class Artist {
         this.artistPhone = artistPhone;
     }
 
+
     @Override
     public String toString() {
         return "Artist{" +
-                "id=" + id +
+                "artistId=" + artistId +
                 ", artistName='" + artistName + '\'' +
                 ", artistPhone='" + artistPhone + '\'' +
+                ", categoryName=" + categoryName +
                 '}';
     }
-
-
-
 }
+
+
+
+

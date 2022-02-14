@@ -14,7 +14,7 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private Long locationId;
 
     @Column
     private String locationName;
@@ -23,7 +23,7 @@ public class Location {
     private String city;
 
     @Column
-    private String phone;
+    private String locationPhone;
 
     @ManyToOne
     @JoinColumn(name = "Artist")
@@ -34,22 +34,21 @@ public class Location {
     private Title title;
 
     public Location() {
-
     }
 
-    public Location(Long id, String locationName, String city, String phone) {
-        this.id = id;
+    public Location(Long locationId, String locationName, String city, String locationPhone) {
+        this.locationId = locationId;
         this.locationName = locationName;
         this.city = city;
-        this.phone = phone;
+        this.locationPhone = locationPhone;
     }
 
-    public Long getId() {
-        return id;
+    public Long getLocationId() {
+        return locationId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
     }
 
     public String getLocationName() {
@@ -68,23 +67,26 @@ public class Location {
         this.city = city;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getLocationPhone() {
+        return locationPhone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setLocationPhone(String locationPhone) {
+        this.locationPhone = locationPhone;
     }
+
 
     @Override
     public String toString() {
         return "Location{" +
-                "id=" + id +
+                "locationId=" + locationId +
                 ", locationName='" + locationName + '\'' +
                 ", city='" + city + '\'' +
-                ", phone='" + phone + '\'' +
+                ", locationPhone='" + locationPhone + '\'' +
                 '}';
     }
 
-
 }
+
+
+

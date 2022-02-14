@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+
 @RestController
 @RequestMapping(path = "/api")
 public class CategoryController {
@@ -18,20 +19,19 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-
-    @GetMapping(path = "/categories/{categoryId}")
-    public Optional getCategory(@PathVariable Long categoryId) {
-        System.out.println("running getOneCategory");
-        return categoryService.getCategory(categoryId);
+    //endpoint http://localhost:9092/api/category/ "get all"
+    @GetMapping(path = "/category/")
+    public List<Category> getAllCategories() {
+        System.out.println("getting all Categories");
+        return categoryService.getAllCategories();
     }
 
-
-
-    @PostMapping("/categories/")
+    @PostMapping("/category/")
     public Category createCategory(@RequestBody Category categoryObject) {
-        System.out.println("running createOneCategory");
+        System.out.println("create a new Category");
         return categoryService.createCategory(categoryObject);
     }
+
 }
 
 
@@ -40,17 +40,36 @@ public class CategoryController {
 // fix this method getCategoryName --> Write this code inside the CategoryRepository.java
 
 
-   /* @DeleteMapping("/categories/{categoryId}")
+   /*
+
+@GetMapping(path = "/category/{categoryId}")
+        public String Category getCategory(@PathVariable("id") Long categoryId) {
+            System.out.println("getting one Category");
+            return categoryService.getCategory();
+        }
+
+@DeleteMapping("/categories/{categoryId}")
     public Optional deleteCategory(@PathVariable(value = "categoryId") Long categoryId) {
         System.out.println("deleting the category with the id of " + categoryId);
         return categoryService.deleteCategory(categoryId);
     }
 
-  //endpoint http://localhost:9092/api/categories/ "get all"
-    @GetMapping(path = "/categories/")
-    public List<Category> getAllCategories() {
-        System.out.println("running getAllCategories");
-        return categoryService.getAllCategories();
+
+@GetMapping("/category/{id}")
+            public ResponseEntity<Category> getCategory(@PathVariable("id") Long categoryId) {
+                Category category = userService.findUserById(id);
+                return new ResponseEntity<>(user, HttpStatus.OK);
+            }
+
+        @PostMapping("/add")
+            public ResponseEntity<User> addUser(@RequestBody User user) {
+                User newUser = userService.addUser(user);
+                return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+            }
+
+
+
+
     }*/
 
 //    @PostMapping("/categories/")

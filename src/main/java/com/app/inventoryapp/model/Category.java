@@ -12,7 +12,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private Long categoryId;
 
     @Column
     private String categoryName;  //CategoryName categoryName
@@ -21,27 +21,29 @@ public class Category {
     private String materials;
 
 
-    @OneToMany
-    @JoinColumn(name = "Artist")
-    private List<Artist> artist;
-
 
     public Category() {
     }
 
-    public Category(Long id, String categoryName, String materials, String artist) {
-        this.id = id;
+    public Category(Long categoryId, String categoryName, String materials) {
+        this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.materials = materials;
     }
 
+    @OneToMany(mappedBy = "Category", orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "artistName")
+    private List<Artist> artist;
 
-    public Long getId() {
-        return id;
+
+
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getCategoryName() {
@@ -63,12 +65,13 @@ public class Category {
     @Override
     public String toString() {
         return "Category{" +
-                "id=" + id +
+                "categoryId=" + categoryId +
                 ", categoryName='" + categoryName + '\'' +
                 ", materials='" + materials + '\'' +
                 '}';
     }
 }
+
 
     // one category can contain one location
     //@OneToOne(mappedBy = "category", orphanRemoval = true)

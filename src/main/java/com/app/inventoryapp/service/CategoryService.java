@@ -14,11 +14,10 @@ import java.util.Optional;
 @Service
 public class CategoryService {
 
-
     private CategoryRepository categoryRepository;
 
-    @Autowired
-    public void setCategoryRepository(@Qualifier(value = "Category") CategoryRepository categoryRepository) {
+    @Autowired //(@Qualifier(value = "Category")
+    public void setCategoryRepository (CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
     //----------------------------------
@@ -50,7 +49,7 @@ public class CategoryService {
         if (category.isPresent()) {
             return category; //categoryId ?
         } else {
-            throw new InformationNotFoundException("category with id " + categoryName + " not found");
+            throw new InformationNotFoundException("Category with name " + categoryName + " not found");
         }
     }
 
@@ -77,6 +76,8 @@ public class CategoryService {
         }
 
     }
+
+
 }
 
 

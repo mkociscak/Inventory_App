@@ -1,11 +1,14 @@
 package com.app.inventoryapp.repository;
 
 import com.app.inventoryapp.model.Artist;
+import com.app.inventoryapp.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
 
-public interface ArtistRepository extends JpaRepository<Artist, Long>{
+public interface ArtistRepository extends JpaRepository<Artist, Long> {
+    Artist findByArtistName(String artistName);
+
 }
