@@ -1,38 +1,40 @@
 package com.app.inventoryapp.controller;
 
-import com.app.inventoryapp.model.Category;
-import com.app.inventoryapp.repository.CategoryRepository;
+import com.app.inventoryapp.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+
 @RestController
 @RequestMapping(path = "/api")
-
 public class LocationController {
 
+    private LocationService locationService;
 
-//Category Repo
+    @Autowired
+    public void setLocationService (LocationService locationService) {
+        this.locationService = locationService;
+    }
 
-//END Category Repo
 
-    @GetMapping(path = "/locations/")
+    @GetMapping(path = "/location/")
     public String getAllLocations() {
         return "get all locations";
     }
 
 
-    @GetMapping(path = "/locations/{locationId}")
+    @GetMapping(path = "/location/{locationId}")
     public String getLocation(@PathVariable Long locationId) {
         return "getting the location with the id of " + locationId;
     }
 
-    @PostMapping("/locations/")
+    @PostMapping("/location/")
     public String createLocation(@RequestBody String body) {
         return "creating a location " + body;
     }
 
-    @PutMapping("locations/{locationId}")
+    @PutMapping("location/{locationId}")
     public String updateLocation(@PathVariable(value = "locationId") Long locationId, @RequestBody String body) {
         return "updating the location with the id of " + locationId + body;
     }
